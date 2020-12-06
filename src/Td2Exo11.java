@@ -30,17 +30,23 @@ class ABR {
 	}
 	
 	private String toString(arbreBinaire binaire) {
-		String str= "";
-		if(binaire.R > -1) {
-			str = binaire.R+" -> ";
-			if(binaire.nD == null) str += "f"+binaire.feuilleD+"\n";
-			else str += toString(binaire.nD)+"\n";
+		String str = binaire.R+" -> ";
+		
+		if(binaire.nD != null) {
+			str += binaire.nD.R+"\n";
+			str += toString(binaire.nD);
+		}else{
+			str += "f"+binaire.feuilleD+"\n";
 		}
-		if(binaire.R > 0) {
-			str += binaire.R+" -> ";
-			if(binaire.nG == null) str += "f"+binaire.feuilleG+"\n";
-			else str += toString(binaire.nG)+"\n";
+		
+		str += binaire.R+" -> ";
+		if(binaire.nG != null) {
+			str += binaire.nG.R+"\n";
+			str += toString(binaire.nG);
+		}else{
+			str += "f"+binaire.feuilleG+"\n";
 		}
+		
 		return str+"\n";
 	}
 	
